@@ -1,0 +1,29 @@
+//49. Group Anagrams
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+     
+        // stored values
+        List<List<String>> groupedAnagrams = new ArrayList<>();
+        HashMap<String, List<String>> map = new HashMap<>();
+        
+        //iterate
+        for(String current : strs){
+            
+            //variables
+            char[] characters = current.toCharArray();
+            Arrays.sort(characters);
+            String sorted = new String(characters);
+            
+            //condition check if not in map
+            if(!map.containsKey(sorted)){
+                //do this add
+                map.put(sorted, new ArrayList<>());
+            }
+            map.get(sorted).add(current);
+        }
+        
+        //output
+        groupedAnagrams.addAll(map.values());
+        return groupedAnagrams;
+    }
+}

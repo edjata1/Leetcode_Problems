@@ -1,0 +1,35 @@
+//328. Odd Even Linked List
+/**leetcode
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+//class
+class Solution {
+    //method
+    public ListNode oddEvenList(ListNode head) {
+        //error check condition
+        if(head == null) return null;
+        
+        //list node
+        ListNode odd = head;
+        ListNode even = head.next;
+        ListNode evenHead = even;
+        
+        //condition
+        while(even != null && even.next != null){
+            odd.next = even.next;
+            odd = odd.next;
+            even.next = odd.next;
+            even = even.next;
+        }
+        odd.next = evenHead;
+        //return
+        return head;
+    }
+}

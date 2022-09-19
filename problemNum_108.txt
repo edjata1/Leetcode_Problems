@@ -1,0 +1,46 @@
+//108. Convert Sorted Array to Binary Search Tree
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        //recusive sorted in asding set letf and right
+        
+        //error check
+        if(nums == null || nums.length == 0){
+            return null;
+        }
+        //output
+        return constructBSTRecursive(nums, 0, nums.length - 1);   
+    }
+    
+    //private Method
+    private TreeNode constructBSTRecursive(int[] nums, int left, int right){
+        //error check
+        if(left > right){
+            //output
+            return null;
+        }
+        //condition
+        // get mid
+        int mid = left + (right - left)/2;
+        //make current tree from class
+        TreeNode current = new TreeNode(nums[mid]);
+        //make left right
+        current.left = constructBSTRecursive(nums, left, mid - 1);
+        current.right = constructBSTRecursive(nums, mid + 1, right);
+        return current;
+    }
+}

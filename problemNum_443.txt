@@ -1,0 +1,33 @@
+//443. String Compression
+class Solution {
+    public int compress(char[] chars) {
+        //var
+        int index = 0;
+        int i = 0;
+        
+        //conditions
+        while(i < chars.length){
+            int j = i;
+            
+            //condition
+            while(j < chars.length && chars[j] == chars[i]){
+                j++;
+            }
+            
+            chars[index++] = chars[i];
+            
+            //condition
+            if(j - i > 1){
+                String count = j - i + "";
+                
+                //iterate
+                for(char c : count.toCharArray()){
+                    chars[index++] = c;
+                }
+            }
+            i = j;
+        }
+        //output
+        return index;
+    }
+}

@@ -1,0 +1,27 @@
+//881. Boats to Save People
+class Solution {
+    public int numRescueBoats(int[] people, int limit) {
+        //sort array
+        Arrays.sort(people);
+        
+        //variable
+        int numBoats = 0;
+        int i = 0;
+        int j = people.length - 1;
+        
+        //condition
+        while(i <= j){
+            //iterate
+            if(people[i] + people[j] <= limit){
+                i++;
+                j--;
+            }else{
+                j--;
+            }
+            numBoats++;
+        }
+        
+        //output
+        return numBoats;
+    }
+}

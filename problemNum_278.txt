@@ -1,0 +1,30 @@
+//278. First Bad Version leetcode
+
+/* The isBadVersion API is defined in the parent class VersionControl.
+      boolean isBadVersion(int version); */
+//class
+public class Solution extends VersionControl {
+    //method
+    public int firstBadVersion(int n) {
+        int left = 0; 
+        int right = n;
+        
+        //conditions
+        while(left < right){
+            int midpoint = left + (right - left)/2;
+            if(isBadVersion(midpoint)){
+                right = midpoint;
+                
+            }else{
+                left = midpoint + 1;
+            }
+        }
+        
+        if(left == right && isBadVersion(left)){
+            return left;
+        }
+        //output
+        return -1;
+        
+    }
+}

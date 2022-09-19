@@ -1,0 +1,54 @@
+//102. Binary Tree Level Order Traversal
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        // list of list to store result values ArrayList
+        List<List<Integer>> result = new ArrayList<>();
+        
+        //error check
+        if(root == null){
+            return result;
+        }
+        // queue to store values from tree
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        
+        //condition
+        while(!queue.isEmpty()){
+            // create var assign value
+            int size = queue.size();
+            List<Integer> currentLevel = new ArrayList<>();
+            //iterate
+            for(int i = 0; i < size; i++){
+                TreeNode current = queue.remove();
+                currentLevel.add(current.val);
+                
+                //conditions
+                if(current.left != null){
+                    queue.add(current.left);
+                }
+                if(current.right != null){
+                    queue.add(current.right);
+                }
+            }
+            result.add(currentLevel);
+        }
+        //output
+        return result;
+        
+    }
+}

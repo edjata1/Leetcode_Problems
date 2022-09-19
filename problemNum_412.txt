@@ -1,0 +1,26 @@
+//412. Fizz Buzz
+class Solution {
+    public List<String> fizzBuzz(int n) {
+        
+        // create result string store return values
+        List<String> result = new ArrayList<String>();
+        
+        // iterate thru n 
+        for(int i = 1; i <= n; i ++){
+            
+            // conditions to check
+            if(i % 3 ==0 && i % 5 == 0){
+                result.add("FizzBuzz");
+            }else if(i % 3 == 0){
+                result.add("Fizz");
+            }else if(i % 5 == 0){
+                result.add("Buzz");
+            }else{
+                result.add(Integer.toString(i));
+            } 
+        }
+        
+        // output result
+        return result;
+    }
+}

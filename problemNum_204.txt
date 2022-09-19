@@ -1,0 +1,33 @@
+//204. Count Primes
+class Solution {
+    public int countPrimes(int n) {
+        //set bool array variable
+        boolean[] primes = new boolean[n];
+        
+        //iterations
+        for(int i = 2; i * i < primes.length; i++){
+            //condition
+            if(!primes[i]){
+                //iterate
+                for(int j = i; j * i < primes.length; j++){
+                    //do this
+                    primes[i * j] = true;
+                }
+            }
+        }
+        
+        //set initialize variable
+        int primeCount = 0;
+        
+        //iterate
+        for(int i = 2; i < primes.length; i++){
+            //condition
+            if(!primes[i]){
+                primeCount++;
+            }
+        }
+        
+        //output
+        return primeCount;
+    }
+}

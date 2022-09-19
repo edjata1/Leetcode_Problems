@@ -1,0 +1,21 @@
+//219. Contains Duplicate II
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+     
+        //store value for the two integers in map
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        
+        // iterate thru numbers
+        for(int i = 0; i <nums.length; i++){
+            //assign num
+            int current = nums[i];
+            //condition
+            if(map.containsKey(current) && i - map.get(current) <= k){
+                return true;
+            }else{
+                map.put(current, i);
+            }
+        }
+        return false;
+    }
+}

@@ -1,0 +1,31 @@
+//202. Happy Number
+class Solution {
+    public boolean isHappy(int n) {
+        //store values hashset
+        HashSet<Integer> seen = new HashSet<>();
+        
+        //condition
+        while(n != 1){
+            
+            //variables
+            int current = n;
+            int sum = 0;
+            
+            //condition
+            while(current != 0){
+                sum += (current % 10) * (current %10);
+                current /= 10;
+            }
+            
+            if(seen.contains(sum)){
+                return false;
+            }
+            
+            seen.add(sum);
+            n = sum;
+        }
+        
+        //output
+        return true;
+    }
+}

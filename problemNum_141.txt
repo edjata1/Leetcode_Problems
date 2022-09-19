@@ -1,0 +1,36 @@
+//141. Linked List Cycle 
+/**leetcode
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+//class
+public class Solution {
+    //method
+    public boolean hasCycle(ListNode head) {
+        //error check condition
+        if(head == null) return false;
+        
+        //list nodes
+        ListNode slow = head;
+        ListNode fast = head.next;
+        
+        //conditions
+        while(slow != fast){
+            if(fast == null || fast.next == null){
+                return false;
+            }
+            //set 
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        //output
+        return true;
+    }
+}

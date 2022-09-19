@@ -1,0 +1,30 @@
+//419. Battleships in a Board
+class Solution {
+    public int countBattleships(char[][] board) {
+        
+        //itialize variable
+        int numBattleships = 0;
+        
+        //iterate
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[i].length; j++){
+              //conditions
+                if(board[i][j] == '.'){
+                    //break out of condition
+                    continue;
+                    
+                }
+                if(i > 0 && board[i - 1][j] == 'X'){
+                    continue;
+                }
+                if(j > 0 && board[i][j - 1] == 'X'){
+                    continue;
+                }
+                numBattleships++;
+            }
+        }
+        //output
+        return numBattleships;
+        
+    }
+}

@@ -1,0 +1,26 @@
+//1295. Find Numbers with Even Number of Digits
+class Solution {
+    public int findNumbers(int[] nums) {
+
+        //keep count of even digits
+        int count = 0;
+        
+        // walk through all the nums in array
+        for (int i : nums) {
+            
+            //find the length of i
+            String s = String.valueOf(i);
+            int iLength = s.length();
+            
+            //add to count if iLength is even
+            if(iLength % 2 == 0){
+                
+                //add to count
+                count++;
+            }
+        }
+        
+        return count;
+    }
+
+}

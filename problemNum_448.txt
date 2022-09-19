@@ -1,0 +1,25 @@
+//448.leetcode problem
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        
+        //list store values
+        List<Integer> missingNumbers = new ArrayList<Integer>();
+        
+        //HashSet store values
+        HashSet<Integer> numbers = new HashSet<Integer>();
+        
+        //iterate thru numbers
+        for(int i : nums){
+            numbers.add(i);
+        }
+        
+        //iterate thru missingNumbers
+        for(int i = 1; i <= nums.length; i++){
+            if(!numbers.contains(i)){
+                missingNumbers.add(i);
+            }
+        }
+        
+        return missingNumbers;
+    }
+}

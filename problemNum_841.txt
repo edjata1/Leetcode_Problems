@@ -1,0 +1,34 @@
+//841. Keys and Rooms
+//class
+class Solution {
+    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        //store value bool arrr
+        boolean[] seen = new boolean[rooms.size()];
+        seen[0] = true;
+        
+        Stack<Integer> keys = new Stack();
+        keys.add(0);
+        
+        //condition
+        while(!keys.isEmpty()){
+            int currentKey = keys.pop();
+            
+            //iterate
+            for(int newKey : rooms.get(currentKey)){
+                //condition
+                if(!seen[newKey]){
+                    seen[newKey] = true;
+                    keys.add(newKey);
+                }
+            }
+        }
+        
+        //iterate
+        for(boolean visited : seen){
+            //condition
+            if(!visited) return false;
+        }
+        //output
+        return true;
+    }
+}

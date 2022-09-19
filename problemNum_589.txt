@@ -1,0 +1,66 @@
+//589. N-ary Tree Preorder Traversal leetcode
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val, List<Node> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+
+class Solution {
+    public List<Integer> preorder(Node root) {
+        //store values
+        LinkedList<Node> stack = new LinkedList<>();
+        LinkedList<Integer> outputArr = new LinkedList<>();
+        
+        //error check condition
+        if(root == null){
+            return outputArr;
+        }
+        
+        //add to stack
+        stack.add(root);
+        
+        //condition
+        while(!stack.isEmpty()){
+            //pull top of stack with pollLast() from linkedList
+            Node node = stack.pollLast();
+            //add to end of array
+            outputArr.add(node.val);
+            //reverse the children nodes and add to stack
+            Collections.reverse(node.children);
+            for(Node child : node.children){
+                stack.add(child);
+            }
+        }
+        //output
+        return outputArr;
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

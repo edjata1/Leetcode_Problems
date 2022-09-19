@@ -1,0 +1,26 @@
+//832. Flipping an Image
+class Solution {
+    public int[][] flipAndInvertImage(int[][] A) {
+        
+        //iterate thru numbers
+        for(int i = 0; i < A.length; i++){
+            
+            //set variables
+            int j = 0;
+            int k = A[i].length - 1;
+            
+            //condition
+            while(j < k){
+                //do this
+                int temp = A[i][j];
+                A[i][j++] = A[i][k];
+                A[i][k--] = temp;
+            }
+            for(j = 0; j < A[i].length; j++){
+                A[i][j] = A[i][j] == 1 ? 0 : 1;
+            }
+        }
+        //output
+        return A;
+    }
+}

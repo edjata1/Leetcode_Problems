@@ -1,0 +1,18 @@
+//977. Squares of a Sorted Array leetcode
+//class
+class Solution {
+    //method
+    public int[] sortedSquares(int[] nums) {
+        //iterate
+        for(int i = 0; i < nums.length; i++){
+            //set nums
+            nums[i] = (int) Math.pow(nums[i], 2);
+            
+        }
+        //sort
+        Arrays.sort(nums);
+        //output
+        return nums;
+        
+    }
+}

@@ -1,0 +1,78 @@
+//112. Path Sum
+/**leetcode
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+//class
+class Solution {
+    //method
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        
+        //error check condition
+        if(root == null) return false;
+        
+        //store values in stack
+        Stack<TreeNode> nodeStack = new Stack();
+        Stack<Integer> sumStack = new Stack();
+        
+        nodeStack.add(root);
+        sumStack.add(targetSum - root.val);
+        
+        //conditions
+        while(!nodeStack.isEmpty()){
+            //vars pop stacks
+            TreeNode currentNode = nodeStack.pop();
+            int currentSum = sumStack.pop();
+            
+            //sub conditions: (l,r)null, & sum=0
+            if(currentNode.left == null && currentNode.right == null && currentSum == 0){
+                //all true 
+                return true;
+            }
+            // left not null
+            if(currentNode.left != null){
+                //do this
+                nodeStack.add(currentNode.left);
+                sumStack.add(currentSum - currentNode.left.val);
+                
+            }
+            // right not null
+            if(currentNode.right != null){
+                nodeStack.add(currentNode.right);
+                sumStack.add(currentSum - currentNode.right.val);
+            }
+        }
+        
+        //output
+        return false;
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

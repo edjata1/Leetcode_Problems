@@ -1,0 +1,26 @@
+//215. Kth Largest Element in an Array
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        
+        //Store value
+        PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>();
+        
+        //iterate array stored value not index number
+        for(int i : nums){
+            
+            //add to heap
+            minHeap.add(i);
+            
+            //condition
+            if(minHeap.size() > k){
+                
+                minHeap.remove();
+                
+            }
+            
+        }
+        
+        //output
+        return minHeap.remove();
+    }
+}

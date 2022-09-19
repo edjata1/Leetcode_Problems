@@ -1,0 +1,23 @@
+//709. To Lower Case
+//class
+class Solution {
+    //method
+    public String toLowerCase(String s) {
+        // var
+        String result = "";
+        
+        //iterate thru char array 
+        for(char c : s.toCharArray()){
+            //conditions
+            if(Character.isUpperCase(c)){
+                //change upper to lower case
+                result = result + (char)(c + 32);
+            }else{
+                //add char to result
+                result = result + c;
+                }
+        }
+        //output
+        return result;
+    }
+}

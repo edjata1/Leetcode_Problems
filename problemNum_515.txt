@@ -1,0 +1,65 @@
+//515. Find Largest Value in Each Tree Row
+/**leetcode
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+//class
+class Solution {
+    //method
+    public List<Integer> largestValues(TreeNode root) {
+        
+        //Create an ArrayList object
+        List<Integer> largestVals = new ArrayList();
+        
+        //call helperMethod
+        helperMethod(root, largestVals, 0);
+        
+        //output
+        return largestVals;
+    }
+    
+    //create helper method
+    public void helperMethod(TreeNode root, List<Integer> largestVals, int level){
+        
+        //error check condition
+        if(root == null) return;
+        
+        
+        //conditions
+        if(level == largestVals.size()){
+            largestVals.add(root.val);
+        }else{
+            largestVals.set(level, Math.max(largestVals.get(level), root.val));
+        }
+        //call helperMethod method
+         helperMethod(root.left, largestVals, level + 1);
+         helperMethod(root.right, largestVals, level + 1);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+//187. Repeated DNA Sequences
+class Solution {
+    public List<String> findRepeatedDnaSequences(String s) {
+        //list
+        List<String> repeatedSequences = new ArrayList<>();
+        //map var string and int
+        Map<String, Integer> seen = new HashMap<>();
+        //set var 
+        int i = 0;
+        
+        //condition
+        while(i + 10 <= s.length()){
+            String subsequence = s.substring(i, i++ + 10);
+            
+            seen.put(subsequence,seen.getOrDefault(subsequence, 0) + 1);
+            //condition
+            if(seen.get(subsequence) == 2){
+                repeatedSequences.add(subsequence);
+            }
+        }
+        //output
+        return repeatedSequences;
+    }
+}

@@ -1,0 +1,28 @@
+//482. License Key Formatting
+class Solution {
+    public String licenseKeyFormatting(String s, int k) {
+        //variables
+        StringBuilder result = new StringBuilder();
+        int count = 0;
+        int i = s.length() - 1;
+        
+        //condition
+        while(i >= 0){
+            //var
+            char current = Character.toUpperCase(s.charAt(i));
+            
+            //conditions
+            if(current =='-'){
+                i--;
+            }else if(count != 0 && count % k == 0){
+                result.insert(0, '-');
+                count = 0;
+            }else{
+                result.insert(0, current);
+                count++;
+                i--;
+            }
+        }
+        return result.toString();
+    }
+}

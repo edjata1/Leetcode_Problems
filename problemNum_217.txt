@@ -1,0 +1,33 @@
+//217. Contains Duplicate
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        
+        // sort array
+        Arrays.sort(nums);
+        //iterate
+        for(int i = 0; i < nums.length - 1; i++){
+            //condition
+            if(nums[i] == nums[i + 1]) return true;
+        }
+        //output
+        return false;
+
+        /* another way:
+                
+        //HashSet to store the values
+        HashSet<Integer> seenPileOfNumbers = new HashSet<Integer>();
+        
+        //iterating thru the numbers not index
+        for(int i : nums){
+            //check if num in set
+            if(seenPileOfNumbers.contains(i)){
+                return true;
+            }else{
+                seenPileOfNumbers.add(i);
+            }
+        }
+        //finished loop no more #'s'
+        return false;
+        */
+    }
+}

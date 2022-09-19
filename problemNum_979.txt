@@ -1,0 +1,58 @@
+//979. Distribute Coins in Binary Tree
+/**leetcode
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+//class
+class Solution {
+    //global variable
+    int numMoves;
+    
+    //method
+    public int distributeCoins(TreeNode root) {
+        
+        //set var value
+        numMoves = 0;
+        
+        //call method
+        giveCoins(root);
+        
+        //output
+        return numMoves;
+    }
+    
+    //method
+    public int giveCoins(TreeNode node){
+        //error check condition
+        if(node == null) return 0;
+        
+        //itialize variables values
+        int left = giveCoins(node.left);
+        int right = giveCoins(node.right);
+        //calculate numMoves: Math.abs() method returns "absolute (positive) value"
+        numMoves += Math.abs(left) + Math.abs(right);
+        //output
+        return node.val + left + right -1;
+    }
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+//1090. Largest Values From Labels
+class Solution {
+    public int largestValsFromLabels(int[] values, int[] labels, int numWanted, int useLimit) {
+        List<Item> items = new ArrayList<>();
+        for(int i = 0; i < labels.length; i++){
+            items.add(new Item(values[i], labels[i]));
+        }
+        
+        PriorityQueue<Item> maxHeap = new PriorityQueue<>((Item a, Item b) -> b.value - a.value);
+        maxHeap.addAll(items);
+        
+        Map<Integer, Integer> counts = new HashMap<>();
+        int value = 0;
+        
+        //condition
+        while(!maxHeap.isEmpty() && numWanted > 0){
+            Item current = maxHeap.remove();
+            counts.put(current.label, counts.getOrDefault(current.label, 0) + 1);
+            
+            if(counts.get(current.label) <= useLimit){
+                value += current.value;
+                numWanted--;
+            }
+        }
+        return value;
+    }
+    
+    class Item{
+        int value;
+        int label;
+        
+        public Item(int value, int label){
+            this.value = value;
+            this.label = label;
+        }
+    }
+}

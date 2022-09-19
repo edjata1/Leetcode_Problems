@@ -1,0 +1,36 @@
+// 846. Hand of Straights leetcode
+//method
+class Solution {
+    public boolean isNStraightHand(int[] hand, int groupSize) {
+        //create treemap
+        TreeMap<Integer, Integer> cardCounts = new TreeMap();
+        
+        //iterate thru card
+        for(int card : hand){
+            //condition
+            if(!cardCounts.containsKey(card)){
+                cardCounts.put(card, 1);
+            }else{
+                cardCounts.replace(card, cardCounts.get(card) + 1);
+            }
+        }
+        
+        //condition
+        while(cardCounts.size() > 0){
+            int firstCard = cardCounts.firstKey();
+            
+            for(int i = firstCard; i < firstCard + groupSize; i++){
+                if(!cardCounts.containsKey(i)) return false;
+                int count = cardCounts.get(i);
+                if(count == 1){
+                    cardCounts.remove(i);
+                }else{
+                    cardCounts.replace(i, cardCounts.get(i) - 1);
+                }
+            }
+        }
+        
+        //output
+        return true;
+    }
+}

@@ -1,0 +1,27 @@
+//704. Binary Search
+//class
+class Solution {
+    //method
+    public int search(int[] nums, int target) {
+        //error check condition
+        if(nums.length == 0) return -1;
+        
+        //start and end index
+        int left = 0;
+        int right =nums.length - 1;
+        
+        //condition
+        while(left <= right){
+            int midpoint = left + (right - left)/2;
+            if(nums[midpoint] == target){
+                return midpoint;
+            }else if(nums[midpoint] > target){
+                right = midpoint - 1;
+            }else {
+                left = midpoint + 1;
+            }
+        }
+        //output
+        return -1;
+    }
+}
